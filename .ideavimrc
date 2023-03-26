@@ -1,0 +1,36 @@
+set incsearch
+set ignorecase
+set smartcase 
+set number relativenumber
+set NERDTree
+
+let mapleader = " "
+
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+vnoremap < <gv
+vnoremap > >gv
+
+map <s-l> gt
+map <s-h> gT
+
+nnoremap gw :action FindWordAtCaret<CR>
+
+vnoremap <s-j> :action MoveLineDown<CR>
+vnoremap <s-k> :action MoveLineUp<CR>
+
+nnoremap <leader>t :action EditorMatchBrace<CR>
+
+nnoremap <leader>cc :action CommentByLineComment<CR>
+vnoremap <leader>cc :action CommentByBlockComment<CR>
+
+nnoremap <leader>d :action CloseEditor<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+
+nnoremap <leader>fu :action FindUsages<CR>
+nnoremap <leader>fg :action FindInPath<CR>
