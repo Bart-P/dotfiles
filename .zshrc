@@ -20,6 +20,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 unsetopt autocd beep extendedglob
 bindkey -e
+bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/bp/.zshrc'
@@ -53,3 +54,7 @@ alias xs='sudo /opt/lampp/lampp start'
 alias ll='ls -al'
 
 eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
