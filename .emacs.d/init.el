@@ -7,13 +7,13 @@
 
 (set-face-attribute 'default nil
 		    :font "UbuntuMono Nerd Font"
-		    :height 160
+		    :height 170
 		    :weight 'light)
 
 (set-face-attribute 'variable-pitch nil
 		    :font "Ubuntu Nerd Font"
-		    :height 160
-		    :weight 'medium)
+		    :height 170
+		    :weight 'light)
 
 ;; Set column numbers in modeline and relative line numbers
 (column-number-mode)
