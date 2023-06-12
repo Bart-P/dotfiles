@@ -142,6 +142,7 @@
    "." '(project-find-file :which-key "find file in project")
    "f" '(:ignore t :which-key "finds")
    "ff" '(counsel-find-file :which-key "find file")
+   "fr" '(project-find-regexp :which-key "find regexp in project files")
    "t" '(:ignore t :which-key "toggles")
    "tt" '(counsel-load-theme :which-key "choose theme")))
 
