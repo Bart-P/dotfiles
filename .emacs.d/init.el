@@ -5,7 +5,15 @@
 (tooltip-mode -1)
 (set-fringe-mode 10)
 
-(set-face-attribute 'default nil :font "UbuntuMono Nerd Font" :height 180)
+(set-face-attribute 'default nil
+		    :font "UbuntuMono Nerd Font"
+		    :height 160
+		    :weight 'light)
+
+(set-face-attribute 'variable-pitch nil
+		    :font "Ubuntu Nerd Font"
+		    :height 160
+		    :weight 'medium)
 
 ;; Set column numbers in modeline and relative line numbers
 (column-number-mode)
