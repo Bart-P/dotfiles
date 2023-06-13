@@ -171,7 +171,7 @@
   :after org
   :hook (org-mode . org-bullets-mode)
   :custom
-  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●" "○")))
+  (org-bullets-bullet-list '("●" "◉" "○" "◉" "○" "◉" "○" "◉")))
 
 (dolist (face '((org-level-1 . 1.2)
 	        (org-level-2 . 1.1)
