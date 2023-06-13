@@ -154,6 +154,44 @@
   ("k" text-scale-decrease "dec")
   ("q" nil "quit" :exit t))
 
+(defun bp/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (auto-fill-mode 0)
+  (visual-line-mode 1)
+  (setq evit-auto-indent nil))
+
+(use-package org
+  :hook (org-mode . bp/org-mode-setup)
+  :config
+  (setq org-ellipsis " ⌄")
+  (setq org-hide-emphasis-markers t))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●" "○")))
+
+(dolist (face '((org-level-1 . 1.2)
+	        (org-level-2 . 1.1)
+	        (org-level-3 . 1.05)
+	        (org-level-4 . 1.0)
+	        (org-level-5 . 1.0)
+	        (org-level-6 . 1.0)
+	        (org-level-7 . 1.0)
+	        (org-level-8 . 1.0)))
+  (set-face-attribute (car face) nil :font "Ubuntu Nerd Font" :weight 'medium :height (cdr face))
+
+    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+    (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -163,7 +201,7 @@
    '("da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" "2f8eadc12bf60b581674a41ddc319a40ed373dd4a7c577933acaff15d2bf7cc6" "631c52620e2953e744f2b56d102eae503017047fb43d65ce028e88ef5846ea3b" "2dd4951e967990396142ec54d376cced3f135810b2b69920e77103e0bcedfba9" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" default))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(hydra general counsel ivy-rich rainbow-delimiters evil-collection doom-themes all-the-icons swiper which-key doom-modeline ivy use-package)))
+   '(org-bullets hydra general counsel ivy-rich rainbow-delimiters evil-collection doom-themes all-the-icons swiper which-key doom-modeline ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
