@@ -7,10 +7,10 @@
 (set-fringe-mode 10)
 
 (set-face-attribute 'default nil
-		    :font "JetBrainsMono Nerd Font Mono"
-		    :height 150
+		    :font "UbuntuMono Nerd Font Mono"
+		    :height 170
 		    :weight 'regular)
-yellow
+
 (set-face-attribute 'variable-pitch nil
 		    :font "Ubuntu Nerd Font"
 		    :height 170
@@ -18,7 +18,7 @@ yellow
 
 ;; Set column numbers in modeline and relative line numbers
 (column-number-mode)
-(setq display-line-numbers 'relative)
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
 ;; Disable line numbers for some modes
