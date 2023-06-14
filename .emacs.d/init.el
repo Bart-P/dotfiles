@@ -143,7 +143,15 @@
    "." '(project-find-file :which-key "find file in project")
    "f" '(:ignore t :which-key "finds")
    "ff" '(counsel-find-file :which-key "find file")
-   "fr" '(project-find-regexp :which-key "find regexp in project files")
+   "fo" '(counsel-recentf :which-key "find recent (old) file")
+   "fr" '(project-find-regexp :which-key "find regexp in project files"))
+
+  (bp/leader-keys
+   "." '(project-find-file :which-key "find file in project")
+   "b" '(:ignore t :which-key "buffers")
+   "bb" '(counsel-ibuffer :which-key "all buffers"))
+
+  (bp/leader-keys
    "t" '(:ignore t :which-key "toggles")
    "tt" '(counsel-load-theme :which-key "choose theme")))
 
