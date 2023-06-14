@@ -1,4 +1,5 @@
 (setq inhibit-startup-message -1)
+(setq line-spacing 0.3)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -6,10 +7,10 @@
 (set-fringe-mode 10)
 
 (set-face-attribute 'default nil
-		    :font "UbuntuMono Nerd Font"
-		    :height 170
-		    :weight 'light)
-
+		    :font "JetBrainsMono Nerd Font Mono"
+		    :height 150
+		    :weight 'regular)
+yellow
 (set-face-attribute 'variable-pitch nil
 		    :font "Ubuntu Nerd Font"
 		    :height 170
