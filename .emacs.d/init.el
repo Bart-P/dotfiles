@@ -4,6 +4,11 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (tooltip-mode -1)
+
+;; keeps recently opened files saved
+(recentf-mode 1)
+
+;; left right padding
 (set-fringe-mode 10)
 
 (set-face-attribute 'default nil
