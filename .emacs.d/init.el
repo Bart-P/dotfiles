@@ -1,5 +1,5 @@
 (setq inhibit-startup-message -1)
-(setq line-spacing 0.3)
+(setq line-spacing 0.4)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
