@@ -11,6 +11,15 @@
 ;; left right padding
 (set-fringe-mode 10)
 
+;; set history mode for minibuffers
+(setq history-length 25)
+(savehist-mode 1)
+
+;; Move customization variables to separate file, otherwise it will pollute the init.el file.. 
+(setq custom-file (locate-user-emacs-file "custom-vars.el"))
+(load custom-file 'noerror 'nomessage)
+
+;; set up fonts 
 (set-face-attribute 'default nil
 		    :font "UbuntuMono Nerd Font Mono"
 		    :height 170
