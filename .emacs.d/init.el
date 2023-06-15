@@ -15,6 +15,9 @@
 (setq history-length 25)
 (savehist-mode 1)
 
+;; disable all graphical pop up, all otherwise i have to click
+(setq use-dialog-box nil)
+
 ;; Move customization variables to separate file, otherwise it will pollute the init.el file.. 
 (setq custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file 'noerror 'nomessage)
