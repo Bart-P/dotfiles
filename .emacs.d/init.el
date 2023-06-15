@@ -15,6 +15,9 @@
 (setq history-length 25)
 (savehist-mode 1)
 
+;; if files change outside of emacs, update all buffers!
+(global-auto-revert-mode 1)
+
 ;; disable all graphical pop up, all otherwise i have to click
 (setq use-dialog-box nil)
 
