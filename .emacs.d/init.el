@@ -172,8 +172,7 @@
    "bb" '(counsel-ibuffer :which-key "all buffers"))
 
   (bp/leader-keys
-   "p" '(:ignore t :which-key "projects")
-   "pP" '(projectile-command-map :which-key "Projectile Key-Map"))
+   "p" '(projectile-command-map :which-key "Projectile Key-Map"))
 
   (bp/leader-keys
    "t" '(:ignore t :which-key "toggles")
@@ -243,3 +242,8 @@
   (when (file-directory-p "~/Projects")
     (setq projectile-project-search-path '("~/Projects")))
   (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package magit)
