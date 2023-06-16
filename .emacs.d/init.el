@@ -85,10 +85,10 @@
 (use-package evil-collection
   :after evil
   :config
-  (setq evil-collection-mode-list '(dashboard dired ibuffer))
+  (setq evil-collection-mode-list '(dashboard dired ibuffer magit))
   (evil-collection-init))
 
-;; ESC to quit prompts
+;; Esc to quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (require 'package)
