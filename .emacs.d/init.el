@@ -5,53 +5,49 @@
 (menu-bar-mode -1)
 (tooltip-mode -1)
 
-;; keeps recently opened files saved
-(recentf-mode 1)
-
 ;; left right padding
 (set-fringe-mode 10)
-
-;; set history mode for minibuffers
-(setq history-length 25)
-(savehist-mode 1)
-
-;; if files change outside of emacs, update all buffers AND Dired!
-(global-auto-revert-mode 1)
-(setq global-auto-revert-non-file-buffers t)
 
 ;; disable all graphical pop up, all otherwise i have to click
 (setq use-dialog-box nil)
 
-;; Move customization variables to separate file, otherwise it will pollute the init.el file.. 
-(setq custom-file (locate-user-emacs-file "custom-vars.el"))
-(load custom-file 'noerror 'nomessage)
+;; Set column numbers in modeline and relative line numbers
+(column-number-mode)
+ (setq display-line-numbers-type 'relative)
+ (global-display-line-numbers-mode t)
+  ;; Disable line numbers for some modes
+ (dolist (mode '(org-mode-hook
+                 term-mode-hook
+                 shell-mode-hook
+                 eshell-mode-hook))
+ (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+(use-package all-the-icons
+ :if (display-graphic-p))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; set up fonts 
 (set-face-attribute 'default nil
-		    :font "UbuntuMono Nerd Font Mono"
-		    :height 170
-		    :weight 'regular)
+                  :font "UbuntuMono Nerd Font Mono"
+                  :height 160
+                  :weight 'regular)
 
 (set-face-attribute 'variable-pitch nil
-		    :font "Ubuntu Nerd Font"
-		    :height 170
-		    :weight 'light)
+                  :font "Ubuntu Nerd Font"
+                  :height 160
+                  :weight 'regular)
 
-;; Set column numbers in modeline and relative line numbers
-(column-number-mode)
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode t)
-
-;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-;; get doom themes, load theme
-(use-package all-the-icons
-  :if (display-graphic-p))
+(set-face-attribute 'fixed-pitch nil
+                  :font "UbuntuMono Nerd Font Mono"
+                  :height 160
+                  :weight 'regular)
 
 (use-package doom-themes
   :ensure t
@@ -71,31 +67,26 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
-;; use evil mode EVERYWHERE
-(use-package evil
-  :init      ;; tweak evil's configuration before loading it
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (setq evil-want-C-u-scroll t)
-  :config
-  (evil-mode 1))
+;; set history mode for minibuffers
+(setq history-length 25)
+(savehist-mode 1)
 
-(use-package evil-collection
-  :after evil
-  :config
-  (setq evil-collection-mode-list '(dashboard dired ibuffer magit))
-  (evil-collection-init))
+;; keeps recently opened files saved
+(recentf-mode 1)
 
-;; Esc to quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; if files change outside of emacs, update all buffers AND Dired!
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
+
+;; Move customization variables to separate file, otherwise it will pollute the init.el file.. 
+(setq custom-file (locate-user-emacs-file "custom-vars.el"))
+(load custom-file 'noerror 'nomessage)
 
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+                       ("org" . "https://orgmode.org/elpa/")
+                       ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
  (unless package-archive-contents
@@ -127,21 +118,6 @@
   :config
   (ivy-mode 1))
 
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
-
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-;; setup which-key
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.2))
-
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
@@ -153,6 +129,26 @@
 	 :map minibuffer-local-map
 	 ("C-r" . counsel-minibuffer-history)))
 
+;; use evil mode EVERYWHERE
+(use-package evil
+  :init      ;; tweak evil's configuration before loading it
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (setq evil-want-C-u-scroll t)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (setq evil-collection-mode-list '(dashboard dired ibuffer magit))
+  (evil-collection-init))
+
+;; Esc to quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+  
 (use-package general
   :config
   (general-create-definer bp/leader-keys
@@ -186,6 +182,12 @@
   ("k" text-scale-decrease "dec")
   ("q" nil "quit" :exit t))
 
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.2))
+
 (defun bp/org-mode-setup ()
   (org-indent-mode)
   (variable-pitch-mode 1)
@@ -204,15 +206,16 @@
   :hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("●" "◉" "○" "◉" "○" "◉" "○" "◉")))
+
 (with-eval-after-load 'org-faces
     (dolist (face '((org-level-1 . 1.2)
-		    (org-level-2 . 1.1)
-		    (org-level-3 . 1.05)
-		    (org-level-4 . 1.0)
-		    (org-level-5 . 1.0)
-		    (org-level-6 . 1.0)
-		    (org-level-7 . 1.0)
-		    (org-level-8 . 1.0)))
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.05)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 1.0)
+                  (org-level-6 . 1.0)
+                  (org-level-7 . 1.0)
+                  (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :font "Ubuntu Nerd Font" :weight 'book :height (cdr face))
 
     ;; Ensure that anything that should be fixed-pitch in Org files appears that way
@@ -232,7 +235,27 @@
 (use-package visual-fill-column
   :hook (org-mode . efs/org-mode-visual-fill))
 
-;; Projectile setup
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+
+(org-babel-do-load-languages
+ 'org-bable-loadlanguages
+ '((emacs-lisp . t)
+   (python . t)))
+
+(defun bp/org-babel-tangle-config ()
+ (when (string-equal (buffer-file-name)
+  (expand-file-name "~/.emacs.d/Emacs.org"))
+
+  (let ((org-confirm-babel-evaluate nil))
+   (org-babel-tangle))))
+
+(add-hook 'org-mode-hook (lambda ()
+ (add-hook 'after-save-hook #'bp/org-babel-tangle-config)))
+
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
