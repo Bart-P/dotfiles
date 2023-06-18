@@ -1,5 +1,7 @@
 (setq inhibit-startup-message -1)
 (setq-default line-spacing 0.4)
+;; this fixes the lag issue on killing emacs, where x-clipboard takes ages to close
+(setq x-select-enable-clipboard-manager nil) 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
