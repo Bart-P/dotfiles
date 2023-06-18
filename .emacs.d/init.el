@@ -150,31 +150,37 @@
 
 ;; Esc to quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-  
+
 (use-package general
   :config
   (general-create-definer bp/leader-keys
-			  :keymaps '(normal insert visual emacs)
-			  :prefix "SPC"
-			  :global-prefix "C-SPC")
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
 
   (bp/leader-keys
-   "." '(project-find-file :which-key "find file in project")
-   "f" '(:ignore t :which-key "finds")
-   "ff" '(counsel-find-file :which-key "find file")
-   "fo" '(counsel-recentf :which-key "find recent (old) file")
-   "fr" '(project-find-regexp :which-key "find regexp in project files"))
+    "." '(project-find-file :which-key "find file in project")
+    "f" '(:ignore t :which-key "finds")
+    "ff" '(counsel-find-file :which-key "find file")
+    "fo" '(counsel-recentf :which-key "find recent (old) file")
+    "fr" '(project-find-regexp :which-key "find regexp in project files"))
 
   (bp/leader-keys
-   "b" '(:ignore t :which-key "buffers")
-   "bb" '(counsel-ibuffer :which-key "all buffers"))
+    "b" '(:ignore t :which-key "buffers")
+    "bb" '(counsel-ibuffer :which-key "all buffers"))
 
   (bp/leader-keys
-   "p" '(projectile-command-map :which-key "Projectile Key-Map"))
+    "p" '(projectile-command-map :which-key "Projectile Key-Map"))
 
   (bp/leader-keys
-   "t" '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme")))
+    "o" '(:ignore t :which-key "org")
+    "oa" '(org-agenda :which-key "agenda")
+    "ol" '(org-agenda-list :which-key "agenda week list")
+    "ot" '(org-todo :which-key "set todo state"))
+
+  (bp/leader-keys
+    "t" '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "choose theme")))
 
 (use-package hydra)
 
@@ -202,6 +208,12 @@
   :config
   (setq org-ellipsis " ⌄")
   (setq org-agenda-files '("~/Documents/org/TODOs.org"))
+  (setq org-todo-keywords
+   '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+     (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer 't)
   (setq org-hide-emphasis-markers t))
 
 (use-package org-bullets
@@ -211,7 +223,7 @@
   (org-bullets-bullet-list '("●" "◉" "○" "◉" "○" "◉" "○" "◉")))
 
 (with-eval-after-load 'org-faces
-    (dolist (face '((org-level-1 . 1.2)
+  (dolist (face '((org-level-1 . 1.2)
                   (org-level-2 . 1.1)
                   (org-level-3 . 1.05)
                   (org-level-4 . 1.0)
