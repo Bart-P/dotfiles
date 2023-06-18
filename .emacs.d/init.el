@@ -199,6 +199,7 @@
   :hook (org-mode . bp/org-mode-setup)
   :config
   (setq org-ellipsis " ⌄")
+  (setq org-agenda-files '("~/Documents/org/TODOs.org"))
   (setq org-hide-emphasis-markers t))
 
 (use-package org-bullets
