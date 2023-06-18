@@ -1,5 +1,5 @@
 (setq inhibit-startup-message -1)
-(setq line-spacing 0.4)
+(setq-default line-spacing 0.4)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -42,7 +42,7 @@
 (set-face-attribute 'variable-pitch nil
                   :font "Ubuntu Nerd Font"
                   :height 160
-                  :weight 'regular)
+                  :weight 'light)
 
 (set-face-attribute 'fixed-pitch nil
                   :font "UbuntuMono Nerd Font Mono"
@@ -189,7 +189,7 @@
   (setq which-key-idle-delay 0.2))
 
 (defun bp/org-mode-setup ()
-  (org-indent-mode)
+  (org-indent-mode 1)
   (variable-pitch-mode 1)
   (auto-fill-mode 0)
   (visual-line-mode 1)
@@ -240,6 +240,8 @@
 (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
+
+
 
 (org-babel-do-load-languages
  'org-bable-loadlanguages

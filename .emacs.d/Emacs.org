@@ -6,7 +6,7 @@
 #+begin_src emacs-lisp
 
   (setq inhibit-startup-message -1)
-  (setq line-spacing 0.4)
+  (setq-default line-spacing 0.4)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
@@ -55,7 +55,7 @@
   (set-face-attribute 'variable-pitch nil
                     :font "Ubuntu Nerd Font"
                     :height 160
-                    :weight 'regular)
+                    :weight 'light)
 
   (set-face-attribute 'fixed-pitch nil
                     :font "UbuntuMono Nerd Font Mono"
@@ -133,6 +133,9 @@
 #+end_src
 
 ** Pickers and Menus
+
+*** TODO Vertico, Consult and Embark
+  - set up Vertico, Consult and Embark instead of ivy and counsel?
 
 *** Swiper and Ivy
 
@@ -263,14 +266,12 @@
 
 * TODO Org Mode
 
-- [ ] line spacing does not work in org mode, why?
-
 ** Base config
 
 #+begin_src emacs-lisp
 
   (defun bp/org-mode-setup ()
-    (org-indent-mode)
+    (org-indent-mode 1)
     (variable-pitch-mode 1)
     (auto-fill-mode 0)
     (visual-line-mode 1)
