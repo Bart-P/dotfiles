@@ -176,6 +176,7 @@
     "o" '(:ignore t :which-key "org")
     "oa" '(org-agenda :which-key "agenda")
     "ol" '(org-agenda-list :which-key "agenda week list")
+    "os" '(org-schedule :which-key "schedule todo")
     "ot" '(org-todo :which-key "set todo state"))
 
   (bp/leader-keys
@@ -209,8 +210,8 @@
   (setq org-ellipsis " ⌄")
   (setq org-agenda-files '("~/Documents/org/TODOs.org"))
   (setq org-todo-keywords
-   '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-     (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
+   '((sequence "TODO(t)" "NEXT(n)" "ACTIVE(a)" "|" "DONE(d)")
+     (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "WAIT(w)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer 't)
