@@ -98,7 +98,7 @@
 (unless (package-installed-p 'use-package)
    (package-install 'use-package))
 
-(require 'use-package)
+(Require 'use-package)
 (setq use-package-always-ensure t)
 
 (use-package swiper)
@@ -167,7 +167,7 @@
 
   (bp/leader-keys
     "b" '(:ignore t :which-key "buffers")
-    "bb" '(counsel-ibuffer :which-key "all buffers"))
+    "bb" '(counsel-ibuffer :which-key "all buffer"))
 
   (bp/leader-keys
     "p" '(projectile-command-map :which-key "Projectile Key-Map"))
@@ -210,8 +210,10 @@
   (setq org-ellipsis " ⌄")
   (setq org-agenda-files '("~/Documents/org/TODOs.org"))
   (setq org-todo-keywords
-   '((sequence "TODO(t)" "NEXT(n)" "ACTIVE(a)" "|" "DONE(d)")
-     (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "WAIT(w)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
+        '((sequence "TODO(t)" "NEXT(n)" "ACTIVE(a)" "|" "DONE(d)")
+          (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "WAIT(w)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
+  (setq org-refile-targets
+        '(("Archive.org" :maxlevel . 1)))
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer 't)
