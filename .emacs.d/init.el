@@ -213,7 +213,8 @@
         '((sequence "TODO(t)" "NEXT(n)" "ACTIVE(a)" "|" "DONE(d)")
           (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "WAIT(w)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
   (setq org-refile-targets
-        '(("Archive.org" :maxlevel . 1)))
+        '(("Archive.org" :maxlevel . 1)
+          ("TODOs.org" :maxlevel . 1)))
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer 't)
