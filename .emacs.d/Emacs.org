@@ -242,6 +242,12 @@
       "ot" '(org-todo :which-key "set todo state"))
 
     (bp/leader-keys
+      "n" '(:ignore t :which-key "roam notes")
+      "nb" '(org-roam-buffer-toggle :which-key "org roam buffer toggle")
+      "nf" '(org-roam-node-find :which-key "find node")
+      "ni" '(org-roam-node-insert :which-key "insert node"))
+  
+    (bp/leader-keys
       "t" '(:ignore t :which-key "toggles")
       "tt" '(counsel-load-theme :which-key "choose theme")))
 
