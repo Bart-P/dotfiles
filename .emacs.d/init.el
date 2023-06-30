@@ -260,8 +260,6 @@
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 
-
-
 (org-babel-do-load-languages
  'org-bable-loadlanguages
  '((emacs-lisp . t)
@@ -276,6 +274,13 @@
 
 (add-hook 'org-mode-hook (lambda ()
  (add-hook 'after-save-hook #'bp/org-babel-tangle-config)))
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/RoamNotes")
+  :config
+  (org-roam-setup))
 
 (use-package projectile
   :diminish projectile-mode
