@@ -286,7 +286,7 @@
   :custom
   (org-roam-directory "~/RoamNotes")
   :config
-  (org-roam-setup))
+  (org-roam-db-autosync-mode))
 
 (use-package projectile
   :diminish projectile-mode

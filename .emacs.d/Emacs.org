@@ -390,7 +390,7 @@
     :custom
     (org-roam-directory "~/RoamNotes")
     :config
-    (org-roam-setup))
+    (org-roam-db-autosync-mode))
 
 #+end_src
 
