@@ -235,7 +235,7 @@
   (setq org-agenda-files '("~/Documents/org/TODOs.org"))
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "ACTIVE(a)" "|" "DONE(d)")
-          (sequence "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "WAIT(w)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
+          (sequence "WAIT(w)" "BACKLOG(b)" "PLAN(p)" "IDEA(i)" "REVIEW(r)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(C)")))
   (setq org-refile-targets
         '(("Archive.org" :maxlevel . 1)
           ("TODOs.org" :maxlevel . 1)))
