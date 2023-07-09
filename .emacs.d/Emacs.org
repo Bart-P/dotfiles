@@ -463,9 +463,28 @@
     :config
     (setq lsp-enable-which-key-integration t))
 
+#+end_src
+
+** Languages
+
+#+begin_src emacs-lisp
+
   (use-package lua-mode)
   (use-package python-mode)
   (use-package web-mode)
+  
+#+end_src
+
+*** Typescript 
+
+#+begin_src emacs-lisp
+
+  (use-package typescript-mode
+    :mode "\\.ts\\'"
+    :hook (typescript-mode . lsp-deferred)
+    :config
+    (setq typescript-indent-level 2))
+
 #+end_src
 
 * Project and Git
