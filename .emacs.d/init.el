@@ -317,8 +317,8 @@
     :custom
     (company-begin-commands '(self-insert-command))
     (company-idle-delay .1)
-    (company-minimum-prefix-length 2)
-    (company-show-numbers t)
+    (company-minimum-prefix-length 1)
+    (company-show-numbers nil)
     (company-tooltip-align-annotations 't)
     (global-company-mode t))
 

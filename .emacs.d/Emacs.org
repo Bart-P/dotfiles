@@ -304,6 +304,8 @@
 
 ** Base config
 
+- testing electric indent mode, if it messes up my indents everytime in org files... 
+
 #+begin_src emacs-lisp
 
   (defun bp/org-mode-setup ()
@@ -439,8 +441,8 @@
     :custom
     (company-begin-commands '(self-insert-command))
     (company-idle-delay .1)
-    (company-minimum-prefix-length 2)
-    (company-show-numbers t)
+    (company-minimum-prefix-length 1)
+    (company-show-numbers nil)
     (company-tooltip-align-annotations 't)
     (global-company-mode t))
 
