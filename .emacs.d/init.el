@@ -69,6 +69,24 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package dashboard
+  :ensure t
+  :init
+  (setq initial-buffer-choice 'dashboard-open)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Happy Hacking!")
+  (setq dashboard-startup-banner 'logo) 
+  (setq dashboard-center-content t) ;; set to t to center
+  (setq dashboard-items '((recents . 10)
+                          (agenda . 5)
+                          (projects . 5)
+                          (bookmarks . 3)
+                          ;;(registers . 3)
+                          ))
+  ;; (dashboard-modify-heading-icons '((recents . "file") (bookmarks . "book")))
+  (dashboard-setup-startup-hook))
+
 ;; set history mode for minibuffers
 (setq history-length 25)
 (savehist-mode 1)
