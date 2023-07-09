@@ -35,20 +35,19 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; set up fonts 
 (set-face-attribute 'default nil
-                  :font "UbuntuMono Nerd Font Mono"
-                  :height 160
+                  :font "JetBrainsMono Nerd Font Mono"
+                  :height 130
                   :weight 'regular)
 
 (set-face-attribute 'variable-pitch nil
                   :font "Ubuntu Nerd Font"
-                  :height 160
+                  :height 150
                   :weight 'light)
 
 (set-face-attribute 'fixed-pitch nil
-                  :font "UbuntuMono Nerd Font Mono"
-                  :height 160
+                  :font "JetBrainsMono Nerd Font Mono"
+                  :height 130
                   :weight 'regular)
 
 (use-package doom-themes
