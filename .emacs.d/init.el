@@ -305,6 +305,40 @@
   :config
   (org-roam-db-autosync-mode))
 
+(use-package flycheck
+  :ensure t
+  :defer t
+  :diminish
+  :init (global-flycheck-mode))
+
+(use-package company
+    :defer 2
+    :diminish
+    :custom
+    (company-begin-commands '(self-insert-command))
+    (company-idle-delay .1)
+    (company-minimum-prefix-length 2)
+    (company-show-numbers t)
+    (company-tooltip-align-annotations 't)
+    (global-company-mode t))
+
+;;  (use-package company-box
+;;    :after company
+;;    :diminish
+;;    :hook (company-mode . company-box-mode))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (setq lsp-enable-which-key-integration t))
+
+(use-package lua-mode)
+(use-package python-mode)
+(use-package web-mode)
+
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
