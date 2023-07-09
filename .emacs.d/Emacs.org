@@ -484,10 +484,38 @@
 #+begin_src emacs-lisp
 
   (use-package typescript-mode
-    :mode "\\.ts\\'"
+    :mode ("\\.ts\\'" "\\.js\\'")
     :hook (typescript-mode . lsp-deferred)
     :config
     (setq typescript-indent-level 2))
+
+#+end_src
+
+** Smartparens
+
+#+begin_src emacs-lisp
+
+  (use-package smartparens
+    :init
+    (smartparens-global-mode))
+
+  (defun indent-between-pair (&rest _ignored)
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
+
+  (sp-local-pair 'prog-mode "{" nil :post-handlers '((indent-between-pair "RET")))
+  (sp-local-pair 'prog-mode "[" nil :post-handlers '((indent-between-pair "RET")))
+  (sp-local-pair 'prog-mode "(" nil :post-handlers '((indent-between-pair "RET")))
+
+#+end_src
+
+- fix indentation when pressing enter within parens 
+
+#+begin_src emacs-lisp
+
+
 
 #+end_src
 

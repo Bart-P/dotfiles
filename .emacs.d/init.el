@@ -335,15 +335,33 @@
   :config
   (setq lsp-enable-which-key-integration t))
 
+(use-package lsp-ui)
+
 (use-package lua-mode)
 (use-package python-mode)
 (use-package web-mode)
 
 (use-package typescript-mode
-  :mode "\\.ts\\'"
+  :mode ("\\.ts\\'" "\\.js\\'")
   :hook (typescript-mode . lsp-deferred)
   :config
   (setq typescript-indent-level 2))
+
+(use-package smartparens
+  :init
+  (smartparens-global-mode))
+
+(defun indent-between-pair (&rest _ignored)
+  (newline)
+  (indent-according-to-mode)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(sp-local-pair 'prog-mode "{" nil :post-handlers '((indent-between-pair "RET")))
+(sp-local-pair 'prog-mode "[" nil :post-handlers '((indent-between-pair "RET")))
+(sp-local-pair 'prog-mode "(" nil :post-handlers '((indent-between-pair "RET")))
+
+
 
 (use-package projectile
   :diminish projectile-mode
