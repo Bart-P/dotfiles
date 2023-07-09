@@ -465,6 +465,8 @@
     :config
     (setq lsp-enable-which-key-integration t))
 
+  (use-package lsp-ui)
+
 #+end_src
 
 ** Languages
