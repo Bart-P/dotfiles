@@ -37,7 +37,7 @@
 
 (set-face-attribute 'default nil
                   :font "JetBrainsMono Nerd Font Mono"
-                  :height 120
+                  :height 130
                   :weight 'regular)
 
 (set-face-attribute 'variable-pitch nil
@@ -47,7 +47,7 @@
 
 (set-face-attribute 'fixed-pitch nil
                   :font "JetBrainsMono Nerd Font Mono"
-                  :height 120
+                  :height 130
                   :weight 'regular)
 
 (use-package doom-themes
