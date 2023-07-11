@@ -86,6 +86,7 @@
   ;; (dashboard-modify-heading-icons '((recents . "file") (bookmarks . "book")))
   (dashboard-setup-startup-hook))
 
+(setq-default indent-tabs-mode nil) 
 ;; set history mode for minibuffers
 (setq history-length 25)
 (savehist-mode 1)

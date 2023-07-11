@@ -113,23 +113,24 @@
 
 * Default config setup
 
-  #+begin_src emacs-lisp
-  
+#+begin_src emacs-lisp
+
+  (setq-default indent-tabs-mode nil) 
   ;; set history mode for minibuffers
   (setq history-length 25)
   (savehist-mode 1)
-  
+
   ;; keeps recently opened files saved
   (recentf-mode 1)
-  
+
   ;; if files change outside of emacs, update all buffers AND Dired!
   (global-auto-revert-mode 1)
   (setq global-auto-revert-non-file-buffers t)
-  
+
   ;; Move customization variables to separate file, otherwise it will pollute the init.el file.. 
   (setq custom-file (locate-user-emacs-file "custom-vars.el"))
   (load custom-file 'noerror 'nomessage)
-  
+
 #+end_src
 
 ** Package manager
