@@ -197,9 +197,7 @@
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
 	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . counsel-minibuffer-history)))
+	 ("C-x C-f" . counsel-find-file)))
   
 #+end_src
 
@@ -439,6 +437,15 @@
   (use-package company
     :defer 2
     :diminish
+    :bind
+    (:map company-active-map
+          ("C-j" . company-select-next))
+    (:map company-active-map
+          ("C-k" . company-select-previous))
+    (:map company-search-map
+          ("C-j" . company-select-next))
+    (:map company-search-map
+          ("C-k" . company-select-previous))
     :custom
     (company-begin-commands '(self-insert-command))
     (company-idle-delay .1)
