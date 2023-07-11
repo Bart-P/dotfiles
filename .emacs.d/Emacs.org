@@ -454,10 +454,8 @@
     (company-tooltip-align-annotations 't)
     (global-company-mode t))
 
-;;  (use-package company-box
-;;    :after company
-;;    :diminish
-;;    :hook (company-mode . company-box-mode))
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
 
 #+end_src
 
