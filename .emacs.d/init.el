@@ -311,45 +311,73 @@
   :init (global-flycheck-mode))
 
 (use-package company
-    :defer 2
-    :diminish
-    :custom
-    (company-begin-commands '(self-insert-command))
-    (company-idle-delay .1)
-    (company-minimum-prefix-length 1)
-    (company-show-numbers nil)
-    (company-tooltip-align-annotations 't)
-    (global-company-mode t))
+  :defer 2
+  :diminish
+  :bind
+  (:map company-active-map
+        ("C-j" . company-select-next))
+  (:map company-active-map
+        ("C-k" . company-select-previous))
+  (:map company-search-map
+        ("C-j" . company-select-next))
+  (:map company-search-map
+        ("C-k" . company-select-previous))
+  :custom
+  (company-begin-commands '(self-insert-command))
+  (company-idle-delay .1)
+  (company-minimum-prefix-length 1)
+  (company-show-numbers nil)
+  (company-tooltip-align-annotations 't)
+  (global-company-mode t))
 
-;;  (use-package company-box
-;;    :after company
-;;    :diminish
-;;    :hook (company-mode . company-box-mode))
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  :config
-  (setq lsp-enable-which-key-integration t))
-
+  :hook
+  ((web-mode . lsp)
+   (lsp-mode . lsp-enable-which-key-integration)))
 (use-package lsp-ui)
+(use-package tree-sitter)
+(use-package tree-sitter-langs)
+(advice-add 'json-parse-buffer :around
+            (lambda (orig &rest rest)
+              (save-excursion
+                (while (re-search-forward "\\\\u0000" nil t)
+                  (replace-match "")))
+              (apply orig rest)))
 
 (use-package lua-mode)
 (use-package python-mode)
-(use-package web-mode)
+(use-package php-mode)
+
+(use-package web-mode
+  :ensure t
+  :custom
+  (web-mode-markup-indent-offset 4)
+  (web-mode-css-indent-offset 2)
+  (web-mode-script-padding 0)
+  (web-mode-code-indent-offset 4))
+
+(add-hook 'web-mode-hook (lambda () (whitespace-mode -1)))
+(add-to-list 'auto-mode-alist '("\\.vue" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php" . web-mode))
 
 (use-package typescript-mode
   :mode ("\\.ts\\'" "\\.js\\'")
   :hook (typescript-mode . lsp-deferred)
   :config
-  (setq typescript-indent-level 2))
+  (setq typescript-indent-level 4))
 
 (use-package smartparens
   :init
   (smartparens-global-mode))
 
+;; fix indentation when pressing enter within parens 
 (defun indent-between-pair (&rest _ignored)
   (newline)
   (indent-according-to-mode)
@@ -359,8 +387,6 @@
 (sp-local-pair 'prog-mode "{" nil :post-handlers '((indent-between-pair "RET")))
 (sp-local-pair 'prog-mode "[" nil :post-handlers '((indent-between-pair "RET")))
 (sp-local-pair 'prog-mode "(" nil :post-handlers '((indent-between-pair "RET")))
-
-
 
 (use-package projectile
   :diminish projectile-mode
