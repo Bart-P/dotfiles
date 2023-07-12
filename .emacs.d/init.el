@@ -179,7 +179,7 @@
     "f" '(:ignore t :which-key "finds")
     "ff" '(counsel-find-file :which-key "find file")
     "fo" '(counsel-recentf :which-key "find recent (old) file")
-    "fr" '(project-find-regexp :which-key "find regexp in project files"))
+    "fr" '(counsel-projectile-grep :which-key "grep all project files"))
 
   (bp/leader-keys
     "b" '(:ignore t :which-key "buffers")
@@ -200,6 +200,10 @@
     "nb" '(org-roam-buffer-toggle :which-key "org roam buffer toggle")
     "nf" '(org-roam-node-find :which-key "find node")
     "ni" '(org-roam-node-insert :which-key "insert node"))
+
+  (bp/leader-keys
+    "g" '(:ignore t :which-key "git")
+    "gr" '(counsel-git-grep :which-key "grep all git files"))
 
   (bp/leader-keys
     "t" '(:ignore t :which-key "toggles")
